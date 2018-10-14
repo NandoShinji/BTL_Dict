@@ -94,11 +94,11 @@ public class DictionaryCommandline extends DictionaryManagement {
                             m = scanners.nextInt();
                             switch (m) {
                                 case 1:
-                                    System.out.println("Chúc mừng, bạn đã dính cú lừa =))))");
+                                    System.out.println("đã xóa");
                                     exitt = true;
                                     break;
                                 case 2:
-                                    System.out.println("Một quyết định đúng đắn =))");
+                                    System.out.println("đã hủy thao tác");
                                     exitt = true;
                                     break;
                                 default:
