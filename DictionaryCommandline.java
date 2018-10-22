@@ -1,11 +1,11 @@
-package Dictionary;
+package tudien;
 
 import java.io.IOException;
 import java.util.Scanner;
 
 public class DictionaryCommandline extends DictionaryManagement {
 
-    DictionaryManagement s = new DictionaryManagement();
+    //DictionaryManagement s = new DictionaryManagement();
 
     public DictionaryCommandline(){
         //Emty
@@ -19,8 +19,8 @@ public class DictionaryCommandline extends DictionaryManagement {
 
     //Show all data
     public void showAllWord(){
-        for(Word words : word){
-            System.out.println(words);
+        for(int i = 0; i < word.size(); i ++){
+            System.out.println(word.get(i).getWordTarget() + word.get(i).getWordExplain());
         }
     }
 
@@ -37,8 +37,8 @@ public class DictionaryCommandline extends DictionaryManagement {
         String line = standardizeStrings(scanners.nextLine());
         for(int i = 0; i < word.size(); i++){
             //Compare with method startsWith
-            if(word.get(i).getwt().startsWith(line)){
-                System.out.println(word.get(i).getwt());
+            if(word.get(i).getWordTarget().startsWith(line)){
+                System.out.println(word.get(i).getWordTarget());
             }
         }
     }
@@ -53,8 +53,7 @@ public class DictionaryCommandline extends DictionaryManagement {
         System.out.println("4. Xóa từ");
         System.out.println("5. Sửa nghĩa của từ");
         System.out.println("6. Xuất danh sách từ và nghĩa");
-        System.out.println("7. Xóa toàn bộ từ");
-        System.out.println("8. Lưu thay đổi");
+        System.out.println("7. Lưu thay đổi");
         System.out.println("0. Exit");
         insertFromFile();
         while(true) {
@@ -72,49 +71,26 @@ public class DictionaryCommandline extends DictionaryManagement {
                         dictionaryLookup();
                         break;
                     case 3:
-                        insertFromCommandline();
-                        System.out.println("Done!");
+                        insertFromCommandline();                    
                         break;
                     case 4:
-                        removeWord();
+                        //removeWord();
                         break;
                     case 5:
-                        changeWord();
+                        
                         break;
                     case 6:
                         System.out.println("Danh sách từ và nghĩa có trong từ điển: ");
                         showAllWord();
                         break;
                     case 7:
-                        System.out.println("Hành động này sẽ xóa toàn bộ dữ liệu đang có, bạn có chắc chắn không?");
-                        System.out.println("1. OK ---- 2. Exit");
-                        boolean exitt = false;
-                        int m;
-                        while(true) {
-                            m = scanners.nextInt();
-                            switch (m) {
-                                case 1:
-                                    System.out.println("đã xóa");
-                                    exitt = true;
-                                    break;
-                                case 2:
-                                    System.out.println("đã hủy thao tác");
-                                    exitt = true;
-                                    break;
-                                default:
-                                    System.out.println("Không hợp lệ! Vui lòng nhập lại: ");
-                                    break;
-                            }
-                            if(exitt) break;
-                        }
-                        case 8:
-                            printfList();
-                            break;
+                        printfList();
+                        break;
 
-                        case 0:
-                            System.out.println("Exited!");
-                            exit = true;
-                            break;
+                    case 0:
+                        System.out.println("Exited!");
+                        exit = true;
+                        break;
 
                         default:
                             System.out.println("Không hợp lệ! Vui lòng nhập lại: ");
@@ -126,4 +102,3 @@ public class DictionaryCommandline extends DictionaryManagement {
         }
     }
 }
-

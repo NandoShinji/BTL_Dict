@@ -1,37 +1,62 @@
-package Dictionary;
+package tudien;
+
+import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Word {
-    //Variable for word
-    private String word_target;
-    //Variable for word explain
-    private String word_expalain;
+    public String wordTarget;
+    ArrayList<String> wordExplain = new ArrayList<String>();
 
-    public String getwt(){
-        return word_target;
-    }
-    public void setwt(String word_target){
-        this.word_target = word_target;
-    }
-
-    public String getwe(){
-        return word_expalain;
-    }
-    public void setwe(String word_expalain){
-        this.word_expalain = word_expalain;
-    }
-
-    public Word(){
-        //Emty
+    //Constructor
+    public Word(String wordTagret, String wordExplain) {
+        this.wordTarget = wordTagret;
+        this.wordExplain.add(wordExplain);
     }
 
     //Constructor
-    public Word(String word_target, String word_expalain){
-        this.word_target = word_target;
-        this.word_expalain = word_expalain;
+    public Word() {
+        //Empty
+    }
+
+    //Method set new word
+    public void setWordTarget(String wordTaget) {
+        this.wordTarget = wordTaget;
+    }
+    public String getWordTarget(){
+        return wordTarget;
+    }
+
+    //Method set word explain
+    public void setWordExplain(String wordExplain) {
+        this.wordExplain.add(wordExplain);
+    }
+    public String getWordExplain(){
+        String str = "";
+        for(String we : wordExplain){
+            str += we;
+        }
+        return str;
+    }
+
+    //Method clean
+    public void clean() {
+        this.wordTarget = null;
+        this.wordExplain.clear();
     }
 
     @Override
     public String toString(){
-        return "| " + word_target + ": " + word_expalain;
+        return getWordTarget() + getWordExplain();
     }
+   
+    public int compareTo(Word employee) {
+        if (wordTarget.compareTo(employee.wordTarget) == 0)
+            return 0;
+        else if (wordTarget.compareTo(employee.wordTarget) > 0)
+            return 1;
+        else
+            return -1;
+    }
+  
+
 }
